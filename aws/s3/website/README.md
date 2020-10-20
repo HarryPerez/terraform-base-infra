@@ -13,5 +13,5 @@ module "bucket" {
   bucket_name          = "zerf-bucket" # Mandatory
   index_document       = "index.html"  # Optional
   error_document       = "index.html"  # Optional
-  bucket_custom_domain = ""            # Optional. For example 'mywebsite.wolox.com.ar'
+  bucket_custom_domain = ""            # Optional. For example 'mywebsite.zerf.com.ar'
 }
