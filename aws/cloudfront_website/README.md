@@ -9,7 +9,7 @@ provider "aws" {
 
 # Create the bucket with website configuration
 module "website" {
-  source = "./aws/cloudfront_website"
+  source = "git@github.com:Wolox/terraform-base-infra.git//aws/cloudfront_website"
 
   # Bucket variables
   bucket_name               = "test-bucket"       # Mandatory
