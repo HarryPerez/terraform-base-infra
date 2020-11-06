@@ -1,29 +1,35 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws" # sets configs for AWS provider. Terraform things.
+      source  = "hashicorp/aws"
       version = "~> 2.70"
     }
   }
 }
 
 provider "aws" {
-  profile = "default"
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
-# Test - S3 Bucket for website
-/* 
-module "bucket" {
-  source = "./aws/s3/website"
+# Bucket S3
+resource "aws_s3_bucket" "novimo" {
+  bucket = "zerf-s3-terraform-bucket"
+  acl    = "private"
 
-  bucket_name          = "zerf-bucket" # Mandatory
-  index_document       = "index.html"  # Optional
-  error_document       = "index.html"  # Optional
-  bucket_custom_domain = ""            # Optional. For example 'mywebsite.zerf.com.ar'
+  versioning {
+    enabled = true
+  }
+
+  tags {
+    Name = "my-test-s3-tags-bucket"
+  }
 }
-*/
 
+# EC2
+resource "aws_instance" "rocky" {
+  ami           = "ami-0739f8cdb239fe9ae"
+  instance_type = "t2.nano"
+}
 
 # Test - EB && RDS
 /*

@@ -1,3 +1,5 @@
+#Define vars which are user inside main.tf
+
 variable "bucket_name" {}
 
 variable "policy" {
