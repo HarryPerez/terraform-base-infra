@@ -4,8 +4,8 @@ resource "aws_s3_bucket" "bucket" {
 
   force_destroy = true #A boolean that indicates all objects (including any locked objects) should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable.
 
-  #Attaches a policy to an S3 bucket resource. 
-  #AWS leverages a standard JSON Identity and Access Management (IAM) policy document format across many services to control authorization to resources and API actions. 
+  # Attaches a policy to an S3 bucket resource. 
+  # AWS leverages a standard JSON Identity and Access Management (IAM) policy document format across many services to control authorization to resources and API actions. 
   # Version - IAM policy document version. Valid values: 2008-10-17, 2012-10-17. Defaults to 2012-10-17. 
   # Sid - An ID for the policy statement.
   # Sid - PublicReadGetObject is an action name. There is a list for it.

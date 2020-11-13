@@ -9,7 +9,7 @@ resource "aws_db_instance" "default" {
   #Magnetic – Amazon RDS also supports magnetic storage for backward compatibility. We recommend that you use General Purpose SSD or Provisioned IOPS for any new storage needs. The maximum amount of storage allowed for DB instances on magnetic storage is less than that of the other storage types.
   storage_type = "gp2"
 
-  engine                  = "${var.engine}"                         # Database engine - MySql/Amazon Aurora/PostgreSQL/Oracle/Etc
+  engine                  = "${var.engine}"                         #Database engine - MySql/Amazon Aurora/PostgreSQL/Oracle/Etc
   engine_version          = "${var.engine_version}"                 #Database engine version
   instance_class          = "${var.instance_type}"                  #db.t2.large
   name                    = "${var.db_name}"                        #ZerfDB
@@ -21,6 +21,11 @@ resource "aws_db_instance" "default" {
   skip_final_snapshot     = true                                    #Determines whether a final DB snapshot is created before the DB instance is deleted. If true is specified, no DBSnapshot is created. If false is specified, a DB snapshot is created before the DB instance is deleted, using the value from final_snapshot_identifier
   identifier              = "${var.application}-${var.environment}" #The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier
   backup_retention_period = 7                                       #The days to retain backups for
-  apply_immediately       = true                                    #	Specifies whether any database modifications are applied immediately, or during the next maintenance window
-  multi_az                = "${var.multi_az}"                       #	Specifies if the RDS instance is multi-AZ
+  apply_immediately       = true                                    #Subnets - Check VPC/Etc - Networking
+  vpc_security_group_ids  = ["${var.security_group}"]               #Security Groups - Something About VPC and networking
+  skip_final_snapshot     = true                                    #Determines whether a final DB snapshot is created before the DB instance is deleted. If true is specified, no DBSnapshot is created. If false is specified, a DB snapshot is created before the DB instance is deleted, using the value from final_snapshot_identifier
+  identifier              = "${var.application}-${var.environment}" #The name of the RDS instance, if omitted, Terraform will assign a random, unique identifier
+  backup_retention_period = 7                                       #The days to retain backups for
+  apply_immediately       = true                                    #Specifies whether any database modifications are applied immediately, or during the next maintenance window
+  multi_az                = "${var.multi_az}"                       #Specifies if the RDS instance is multi-AZ
 }
