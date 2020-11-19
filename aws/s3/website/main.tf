@@ -14,6 +14,10 @@ resource "aws_s3_bucket" "bucket" {
   # Principal - A nested configuration block (described below) specifying a principal (or principal pattern) to which this statement applies.
   # The type of principal. For AWS ARNs this is "AWS". For AWS services (e.g. Lambda), this is "Service". For Federated access the type is "Federated".
   # AWS: * - Defines that every entity with AWS account can access. On the other hand if you put an ID of an account, only that account can access.
+  # Save images permissions
+  # Read -> GetObject
+  # Write -> PutObject
+  # Permissions Management -> PutObjectAcl
   policy = <<EOF
 {
     "Version": "2008-10-17",
