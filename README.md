@@ -36,9 +36,3 @@ Note: Save this file in a s3 is a good practice.
 
 # terraform destroy
 Destroy all your infraestructure.
-
-# EMIC - Components
-eb en node
-s3 para el front
-cloudfront
-route 53
